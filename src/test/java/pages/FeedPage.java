@@ -20,7 +20,7 @@ public class FeedPage extends BasePage {
     private static final String ALL_PERSON = "//div[contains(@class,\"rounded-top-corner\")]";
     //div[contains(@class,"rounded-top-corner")]//span[@class='ButtonHug']//span[2]
 @Step("Check that Feed Page is Open")
-    public FeedPage feedPageIsOpen() {
+    public FeedPage validateLogin() {
         Assert.assertEquals(getWebDriver().getCurrentUrl(),"https://moodpanda.com/Feed/");
         return this;
     }

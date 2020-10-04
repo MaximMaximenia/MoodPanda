@@ -39,7 +39,7 @@ public class MainSteps {
         mainPage.openPage()
                 .pressStart()
                 .login(email, password)
-                .feedPageIsOpen();
+                .validateLogin();
 
     }
 
