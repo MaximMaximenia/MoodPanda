@@ -7,9 +7,17 @@ import other.Account;
 import java.util.Random;
 
 public class CreateAccountTest extends BaseTest {
-Random random = new Random();
+    Random random = new Random();
 
-    Account account = new Account("MaxOne", "X", "1h"+random.nextInt(23132)+"owya@aail.ru", "22282817", "22282817", "1999", "Other");
+    Account account = Account.builder()
+            .firstName("MaxOne")
+            .surNameInitial("X")
+            .email("1h" + random.nextInt(23132) + "owya@aail.ru")
+            .password("22282817")
+            .confirmPassword("22282817")
+            .yearBirth("1999")
+            .gender("Other")
+            .build();
 
     @Test(priority = 1)
     public void createAccountTest() {
@@ -17,7 +25,6 @@ Random random = new Random();
                 .createAccount(account);
         feedPage
                 .skipRegistrationMessage()
-                .feedPageIsOpen()
                 .toValidationAccount()
                 .accountValidation(account);
     }

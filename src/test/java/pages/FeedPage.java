@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
 @Log4j2
 public class FeedPage extends BasePage {
 
@@ -19,7 +21,7 @@ public class FeedPage extends BasePage {
     //div[contains(@class,"rounded-top-corner")]//span[@class='ButtonHug']//span[2]
 @Step("Check that Feed Page is Open")
     public FeedPage feedPageIsOpen() {
-        $(By.xpath("//a[contains(text(),'Control my privacy')]")).waitUntil(Condition.appear,20).isDisplayed();
+        Assert.assertEquals(getWebDriver().getCurrentUrl(),"https://moodpanda.com/Feed/");
         return this;
     }
     @Step("Skip registration message with select mood")
