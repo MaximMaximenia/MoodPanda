@@ -1,5 +1,8 @@
 package other;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class Account {
     String firstName;
     String surNameInitial;
@@ -29,9 +32,12 @@ public class Account {
         return gender;
     }
 
-    public Account(String firstName, String surName, String email, String password,String confirmPassword, String yearBirth, String gender) {
+    public Account(String firstName, String surNameInitial, String email, String password,String confirmPassword, String yearBirth, String gender) {
+       log.info("create account with first name :"+firstName+"\nsur name initial:"+surNameInitial+
+               "\npassword:"+password+",\n year birth:"+yearBirth+"\ngender:"+gender );
+
         this.firstName = firstName;
-        this.surNameInitial = surName;
+        this.surNameInitial = surNameInitial;
         this.email = email;
         this.password = password;
         this.yearBirth = yearBirth;

@@ -24,7 +24,8 @@ public class MoodModalTest extends BaseTest {
         feedSteps
                 .createMood(2, "ALL IT S HARD ", "Now");
         myUpdatesPage
-                .checkAmountMood(1);
+                .checkAmountMood(1)
+                .clear();
     }
 
     @Test
@@ -35,7 +36,8 @@ public class MoodModalTest extends BaseTest {
         feedSteps
                 .createMood(2, "ALL IT S HARD ", "Now");
         myUpdatesPage
-                .deleteMoodAndValidation();
+                .deleteMoodAndValidation()
+                .clear();
     }
 
 

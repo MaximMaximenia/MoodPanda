@@ -1,12 +1,14 @@
 package models;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import pages.MyUpdatesPage;
 
 import static com.codeborne.selenide.Selenide.*;
-
+@Log4j2
 public class MoodModal {
     private static final String DATE = "//div[contains(text(),'%s')]";
     private static final String DESCRIPTION_INPUT = "[name=\"ctl00$TextBoxUpdateMoodTag\"]";
@@ -16,8 +18,9 @@ public class MoodModal {
     private static final String MOOD_SLIDER = ".ui-slider-handle.ui-state-default.ui-corner-all";
 
 
-
+    @Step("Select mood 1-10 ")
     public MoodModal selectMood(int youMood) {
+        log.info("select mood");
         $(MOOD_SLIDER).click();
         int defaultMood = 5;
         int amountLeftOrRight;
@@ -36,26 +39,33 @@ public class MoodModal {
 return this;
     }
 
-
+    @Step("Select date in mood modal")
     public MoodModal selectDate(String date) {
+        log.info("select date");
         $(By.xpath(String.format(DATE, date))).click();
         return this;
     }
-
+    @Step("Send description in mood modal")
     public MoodModal sendDescription(String description) {
+        log.info("send mood");
         $(DESCRIPTION_INPUT).sendKeys(description);
         return this;
     }
-
+    @Step("Press \"Cancel\" button")
     public MoodModal pressCancelButton() {
+        log.info("close mood modal");
         $(By.xpath(CANCEL_BUTTON)).click();
         return this;
     }
+    @Step("Check that modal was closed")
     public void checkThatModalWasClosed(){
+        log.info("check that close modal closed");
         $(MODAL).shouldBe(Condition.disappear);
     }
 
+    @Step("Press \"Update Mood\" button")
     public MyUpdatesPage pressUpdateMood() {
+        log.info("press update mood");
         $(By.xpath(UPDATE_BUTTON)).click();
         return new MyUpdatesPage();
     }
