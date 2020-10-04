@@ -1,11 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.ex.ElementNotFound;
-import org.testng.TestException;
 import org.testng.annotations.Test;
 import other.Account;
 
-import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class CreateAccountTest extends BaseTest {
