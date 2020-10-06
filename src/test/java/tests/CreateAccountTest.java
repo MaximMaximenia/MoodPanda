@@ -2,24 +2,35 @@ package tests;
 
 import com.codeborne.selenide.ex.ElementNotFound;
 import org.testng.annotations.Test;
-import other.Account;
+import models.Account;
 
 import java.util.Random;
 
 public class CreateAccountTest extends BaseTest {
     Random random = new Random();
+    String typicalError = "Error: Please complete all fields correctly";
 
     Account account = Account.builder()
             .firstName("MaxOne")
             .surNameInitial("X")
-            .email("1h" + random.nextInt(23132) + "owya@aail.ru")
+            .email("dsdsaa@aail.ru")
             .password("22282817")
             .confirmPassword("22282817")
             .yearBirth("1999")
             .gender("Other")
             .build();
 
-    @Test(priority = 1)
+    Account accountForCheckErrors = Account.builder()
+            .firstName("MaxOne")
+            .surNameInitial("X")
+            .email("1sass@aail.ru")
+            .password("22282817")
+            .confirmPassword("22282817")
+            .yearBirth("1999")
+            .gender("Other")
+            .build();
+
+    @Test
     public void createAccountTest() {
         mainSteps
                 .createAccount(account);
@@ -31,53 +42,52 @@ public class CreateAccountTest extends BaseTest {
 
     @Test
     public void emptyFirstName() {
-        account.setFirstName("");
+        accountForCheckErrors.setFirstName("");
 
         mainSteps
-                .createAccountAndCheckThatErrorMessageAppeared(account);
+                .createAccountAndCheckThatErrorMessageAppeared(accountForCheckErrors,typicalError);
     }
 
     @Test
     public void emptySurNameInitial() {
-        account.setSurNameInitial("");
+        accountForCheckErrors.setSurNameInitial("");
 
         mainSteps
-                .createAccountAndCheckThatErrorMessageAppeared(account);
+                .createAccountAndCheckThatErrorMessageAppeared(accountForCheckErrors,typicalError);
 
     }
 
     @Test
     public void emptyEmail() {
-        account.setEmail("");
+        accountForCheckErrors.setEmail("");
 
         mainSteps
-                .createAccountAndCheckThatErrorMessageAppeared(account);
+                .createAccountAndCheckThatErrorMessageAppeared(accountForCheckErrors,typicalError);
     }
 
     @Test
     public void emptyPassword() {
-        account.setPassword("");
+        accountForCheckErrors.setPassword("");
 
         mainSteps
-                .createAccountAndCheckThatErrorMessageAppeared(account);
+                .createAccountAndCheckThatErrorMessageAppeared(accountForCheckErrors,typicalError);
     }
 
-    @Test(expectedExceptions = ElementNotFound.class)
+    @Test(expectedExceptions = ElementNotFound.class,priority = 1)
     public void mismatchedPassword() {
-        account.setPassword("222222");
-        account.setConfirmPassword("111111");
+        accountForCheckErrors.setPassword("222222");
+        accountForCheckErrors.setConfirmPassword("111111");
 
         mainSteps
-                .createAccountAndCheckThatErrorMessageAppeared(account);
+                .createAccountAndCheckThatErrorMessageAppeared(accountForCheckErrors,typicalError);
     }
 
-    @Test(expectedExceptions = ElementNotFound.class)
+    @Test(priority = 2)
     public void createRegisteredAccount() {
-        account.setPassword("222222");
-        account.setConfirmPassword("111111");
+
 
         mainSteps
-                .createAccountAndCheckThatErrorMessageAppeared(account);
+                .createAccountAndCheckThatErrorMessageAppeared(account,typicalError);
     }
 
 

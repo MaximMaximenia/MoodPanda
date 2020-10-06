@@ -6,14 +6,15 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
-import java.util.List;
-
 import static com.codeborne.selenide.Selenide.*;
+
 @Log4j2
 public class MyUpdatesPage extends BasePage {
 
     private static final String CREATED_MOOD = ".name.pull-left";
-    private static final String DELETE_MOOD = ".glyphicon.glyphicon-trash.ButtonDelete";
+    private static final String DELETE_MOOD = ".ButtonDelete";
+    private static final String FOR_ALL_GET_MOOD= "#ContentPlaceHolderContent_RepeaterFeed_ButtonDelete_0";
+
 @Step("Check amount mood")
     public MyUpdatesPage checkAmountMood(int amountCreatedMood) {
         refresh();
@@ -35,12 +36,12 @@ public class MyUpdatesPage extends BasePage {
     public void clear() {
         refresh();
         ElementsCollection allMood = $$(DELETE_MOOD);
-        log.info("all mood:"+allMood.size());
+        log.info("Delete all mood ( size before:"+allMood.size());
         for (SelenideElement selenideElement : allMood) {
             selenideElement.waitUntil(Condition.appear, 200).click();
         }
         $(DELETE_MOOD).shouldBe(Condition.disappear);
-        ElementsCollection moodAfterDelete = $$("#ContentPlaceHolderContent_RepeaterFeed_ButtonDelete_0");
+        ElementsCollection moodAfterDelete = $$(FOR_ALL_GET_MOOD);
 
         Assert.assertEquals(moodAfterDelete.size(), 1);
     }

@@ -1,4 +1,4 @@
-package models;
+package pages.modals;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
@@ -20,9 +20,9 @@ public class LoginModal {
     public static final String TEXT_FOR_CREATE_ACCOUNT_BUTTON = "Create Account";
 @Step("Login")
     public FeedPage login(String email, String password) {
-        $(By.xpath(EMAIL_INPUT)).waitUntil(Condition.appear,2132).click();
+        $(By.xpath(EMAIL_INPUT)).waitUntil(Condition.appear,2000).click();
         $(By.xpath(EMAIL_INPUT)).sendKeys(email);
-        $(By.xpath(PASSWORD_INPUT)).click();
+        $(By.xpath(PASSWORD_INPUT)).waitUntil(Condition.appear,2000).click();
         $(By.xpath(PASSWORD_INPUT)).sendKeys(password);
         $(LOGIN_BUTTON).click();
         return new FeedPage();

@@ -1,7 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import models.MoodModal;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -11,7 +10,7 @@ import pages.MainPage;
 import pages.MyUpdatesPage;
 import steps.FeedSteps;
 import steps.MainSteps;
-
+import pages.modals.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Listeners(TestListener.class)

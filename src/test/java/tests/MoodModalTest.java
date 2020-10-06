@@ -1,7 +1,5 @@
 package tests;
-
 import org.testng.annotations.Test;
-import pages.FeedPage;
 
 public class MoodModalTest extends BaseTest {
     @Test

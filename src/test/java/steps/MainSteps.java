@@ -1,15 +1,17 @@
 package steps;
 
 import io.qameta.allure.Step;
-import models.LoginModal;
-import other.Account;
-import pages.FeedPage;
-import pages.MainPage;
+import pages.modals.*;
+import models.Account;
+
+import pages.*;
+
+
 
 public class MainSteps {
     MainPage mainPage = new MainPage();
     LoginModal loginModal = new LoginModal();
-    @Step("Create account")
+    @Step("Create account ({account})")
     public void createAccount(Account account) {
         mainPage.openPage()
                 .pressStart()
@@ -17,13 +19,13 @@ public class MainSteps {
                 .createAccount(account);
     }
     @Step("Create Account and check that error message appeared ")
-    public void createAccountAndCheckThatErrorMessageAppeared(Account account) {
+    public void createAccountAndCheckThatErrorMessageAppeared(Account account,String expectedErrorMessage) {
 
         mainPage.openPage()
                 .pressStart()
                 .pressCreateNewAccount()
                 .createAccount(account)
-                .checkThatErrorMessageAppeared();
+                .errorMessageShouldBe(expectedErrorMessage);
     }
     @Step("Failed login for get error message")
     public MainSteps failedLogin(String email, String password) {

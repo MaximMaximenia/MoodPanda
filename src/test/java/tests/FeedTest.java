@@ -10,7 +10,7 @@ public class FeedTest extends BaseTest {
 
         feedPage
                 .toWorldFeedPage()
-                .hugByIntAndValidation(4);
+                .hugByIntAndValidation(2);
     }
 }
 
