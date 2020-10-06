@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
+import static org.testng.Assert.assertEquals;
 
 @Log4j2
 public class AccountPage extends BasePage {
@@ -23,22 +24,20 @@ public class AccountPage extends BasePage {
 
         log.info("Validation account: ");
         log.info("validate surname initial" + account.getFirstName());
-        Assert.assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "First Name"))).getValue(), account.getFirstName());
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "First Name"))).getValue(), account.getFirstName());
 
         log.info("validate surname initial" + account.getSurNameInitial());
-        Assert.assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "Surname"))).getValue(), account.getSurNameInitial());
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "Surname"))).getValue(), account.getSurNameInitial());
 
         log.info("validate email" + account.getEmail());
-        Assert.assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "Email"))).getValue(), account.getEmail());
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "Email"))).getValue(), account.getEmail());
 
         log.info("validate gender" + account.getGender());
-        Assert.assertEquals($(By.xpath(String.format(LOCATOR_FOR_SELECT, "Gender")))
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_SELECT, "Gender")))
 
                 .getValue(), account.getGender());
         log.info("validate year of birth" + account.getYearBirth());
-        Assert.assertEquals($(By.xpath(String.format(LOCATOR_FOR_SELECT, "Year of Birth")))
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_SELECT, "Year of Birth")))
                 .getValue(), account.getYearBirth());
-
-
     }
 }
