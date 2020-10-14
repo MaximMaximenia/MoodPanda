@@ -12,8 +12,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 @Log4j2
 public class LoginModal {
-    public static final String EMAIL_INPUT = "//*[contains(text(),'email')]/..//div[@class = \"col-lg-12\"]//input";
-    public static final String PASSWORD_INPUT = "//*[contains(text(),'Password')]/..//div[@class = \"col-lg-12\"]//input";
+    public static final String EMAIL_INPUT = "//*[contains(text(),'email')]/..//div[@class = 'col-lg-12']//input";
+    public static final String PASSWORD_INPUT = "//*[contains(text(),'Password')]/..//div[@class = 'col-lg-12']//input";
     public static final String LOGIN_BUTTON = "[value='Login']";
     public static final String ERROR_MESSAGE = "#ContentPlaceHolderContent_MessageError";
 

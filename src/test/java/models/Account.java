@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 @Builder
 @Getter
 @Setter
+@ToString
 public class Account {
     String firstName;
     String surNameInitial;

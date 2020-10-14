@@ -19,19 +19,21 @@ public class BasePage {
     private static final String OPEN_MODAL = "#LinkUpdate";
 
     @Step("Go to My Updates page")
-    public MyUpdatesPage toMyUpdatesPage(){
+    public MyUpdatesPage toMyUpdatesPage() {
         log.info("To my updates page");
         $(By.xpath(ME_DROPDOWN)).doubleClick();
         $(By.xpath(String.format(OPTIONS_INTO_DROPDOWN, "My updates"))).click();
         return new MyUpdatesPage();
     }
+
     @Step("Go to World Feed page")
-    public FeedPage toWorldFeedPage(){
+    public FeedPage toWorldFeedPage() {
         log.info("Go to World Feed page");
         $(By.xpath(COMMUNITY_DROPDOWN)).doubleClick();
-        $(By.xpath(String.format(OPTIONS_INTO_DROPDOWN, "World feed"))).waitUntil(Condition.appear,2000).click();
+        $(By.xpath(String.format(OPTIONS_INTO_DROPDOWN, "World feed"))).waitUntil(Condition.appear, 2000).click();
         return new FeedPage();
     }
+
     @Step("Open Mood Modal")
     public MoodModal openMoodModal() {
         log.info("Open Mood Modal");
@@ -44,7 +46,7 @@ public class BasePage {
     public AccountPage toValidationAccount() {
         log.info("Go to Validation Account ( Edit profile page )");
         $(By.xpath(ACCOUNT_DROPDOWN)).doubleClick();
-        $(By.xpath(String.format(OPTIONS_INTO_DROPDOWN, "Edit profile"))).waitUntil(Condition.visible,2000).click();
+        $(By.xpath(String.format(OPTIONS_INTO_DROPDOWN, "Edit profile"))).waitUntil(Condition.visible, 2000).click();
         return new AccountPage();
     }
 

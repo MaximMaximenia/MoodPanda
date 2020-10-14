@@ -13,31 +13,28 @@ import static org.testng.Assert.assertEquals;
 public class AccountPage extends BasePage {
     private static final String LOCATOR_FOR_INPUTS = "//label[contains(text(),'%s')]/..//div[@class='col-lg-9']//input";
     private static final String LOCATOR_FOR_SELECT = "//label[contains(text(),'%s')]/..//div[@class='col-lg-9']//select//option[@selected='selected']";
+    private static final String ACCOUNT_PAGE_IS_OPEN = ".form-group";
 
     public void accountPageIsOpen() {
-        $(".form-group").isDisplayed();
+        $(ACCOUNT_PAGE_IS_OPEN).isDisplayed();
     }
 
 
     @Step("Validation account")
     public void accountValidation(Account account) {
 
-        log.info("Validation account: ");
-        log.info("validate surname initial" + account.getFirstName());
-        assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "First Name"))).getValue(), account.getFirstName());
+        log.info("Validation account: " + account.toString());
 
-        log.info("validate surname initial" + account.getSurNameInitial());
-        assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "Surname"))).getValue(), account.getSurNameInitial());
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "First Name", "FIRST NAME NOT MATCH"))).getValue(), account.getFirstName());
 
-        log.info("validate email" + account.getEmail());
-        assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "Email"))).getValue(), account.getEmail());
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "Surname", "SURNAME NOT MATCH"))).getValue(), account.getSurNameInitial());
 
-        log.info("validate gender" + account.getGender());
-        assertEquals($(By.xpath(String.format(LOCATOR_FOR_SELECT, "Gender")))
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_INPUTS, "Email", "EMAIL NOT MATCH"))).getValue(), account.getEmail());
 
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_SELECT, "Gender", "GENDER NOT MATCH")))
                 .getValue(), account.getGender());
-        log.info("validate year of birth" + account.getYearBirth());
-        assertEquals($(By.xpath(String.format(LOCATOR_FOR_SELECT, "Year of Birth")))
+
+        assertEquals($(By.xpath(String.format(LOCATOR_FOR_SELECT, "Year of Birth", "YEAR OF BIRTH NOT MATCH")))
                 .getValue(), account.getYearBirth());
     }
 }

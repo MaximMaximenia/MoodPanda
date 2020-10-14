@@ -18,9 +18,9 @@ public class MoodModal {
     private static final String MOOD_SLIDER = ".ui-slider-handle.ui-state-default.ui-corner-all";
 
 
-    @Step("Select mood 1-10 ")
+    @Step("Select mood 1-10 {youMood}")
     public MoodModal selectMood(int youMood) {
-        log.info("select mood");
+        log.info("Select mood :"+youMood);
         $(MOOD_SLIDER).click();
         int defaultMood = 5;
         int amountLeftOrRight;
@@ -51,7 +51,7 @@ return this;
         $(DESCRIPTION_INPUT).sendKeys(description);
         return this;
     }
-    @Step("Press \"Cancel\" button")
+    @Step("Press 'Cancel' button")
     public MoodModal pressCancelButton() {
         log.info("close mood modal");
         $(By.xpath(CANCEL_BUTTON)).click();
@@ -63,7 +63,7 @@ return this;
         $(MODAL).shouldBe(Condition.disappear);
     }
 
-    @Step("Press \"Update Mood\" button")
+    @Step("Press 'Update Mood' button")
     public MyUpdatesPage pressUpdateMood() {
         log.info("press update mood");
         $(By.xpath(UPDATE_BUTTON)).click();

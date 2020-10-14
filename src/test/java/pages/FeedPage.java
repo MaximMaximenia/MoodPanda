@@ -17,7 +17,7 @@ public class FeedPage extends BasePage {
     private static final String SKIP_REGISTRATION_MESSAGE = ".ButtonUpdateWelcome";
     private static final String HUG_BUTTON = ".ButtonHug";
     private static final String HUG_AMOUNT = "//span[@class='ButtonHug']//span[2]";
-    private static final String ALL_PERSON = "//div[contains(@class,\"rounded-top-corner\")]";
+    private static final String ALL_PERSON = "//div[contains(@class,'rounded-top-corner')]";
 
     @Step("Check that Feed Page is Open")
     public FeedPage validateLogin() {

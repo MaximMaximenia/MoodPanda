@@ -14,12 +14,12 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class CreateAccountModal {
 
-    public static final String XPATH_FOR_INPUTS = "//*[contains(text(),'%s')]/..//div[@class = \"col-lg-12\"]//input";
-    public static final String XPATH_FOR_SELECTS = "//*[contains(text(),'%s')]/..//div[@class = \"col-lg-12\"]//select";
-    public static final String LOGIN_BUTTON = "[value=\"Login\"]";
+    public static final String XPATH_FOR_INPUTS = "//*[contains(text(),'%s')]/..//div[@class = 'col-lg-12']//input";
+    public static final String XPATH_FOR_SELECTS = "//*[contains(text(),'%s')]/..//div[@class = 'col-lg-12']//select";
+    public static final String LOGIN_BUTTON = "[value='Login']";
     public static final String ERROR_MESSAGE = "#ContentPlaceHolderContent_MessageError";
 
-    @Step("Filling registration field and click \"Login\" ")
+    @Step("Filling registration field and click 'Login' ")
     public CreateAccountModal createAccount(Account account) {
         log.info("Send account details to fields");
         //inputs

@@ -16,14 +16,14 @@ public class MainPage {
 
     @Step("Open page (" + URL + ")")
     public MainPage openPage() {
-        log.info("open page by URL: \"" + URL + "\"");
+        log.info("open page by URL: '" + URL + "'");
         open(URL);
         return this;
     }
 
-    @Step("Press \"Start\" button")
+    @Step("Press 'Start' button")
     public LoginModal pressStart() {
-        log.info("Press \"Start\" button");
+        log.info("Press 'Start' button");
         $(START_BUTTON).waitUntil(Condition.appear, 200).click();
         return new LoginModal();
     }
